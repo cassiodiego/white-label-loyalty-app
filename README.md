@@ -1,3 +1,5 @@
+![](https://github.com/cassiodiego/white-label-loyalty-app/workflows/white-label-loyalty-app/badge.svg)
+
 # white-label-loyalty-app
 Unlabeled loyalty app
 
