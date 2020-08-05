@@ -1,19 +1,20 @@
-name: Swift
-
+name: white-label-loyalty-app
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
-
+    push:
+        branches:
+            - master
+            - develop
+    pull_request:
+        branches:
+            - master
+            - develop
 jobs:
   build:
-
-    runs-on: macos-latest
-
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@master
     - name: Build
-      run: swift build -v
+      run: swift build
     - name: Run tests
-      run: swift test -v
+      run: swift test
