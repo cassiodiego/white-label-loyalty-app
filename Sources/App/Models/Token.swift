@@ -13,6 +13,7 @@ import Crypto
 import Authentication
 
 final class Token: Codable {
+    
   var id: UUID?
   var token: String
   var userID: User.ID
