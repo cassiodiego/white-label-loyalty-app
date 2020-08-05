@@ -10,8 +10,14 @@ import Vapor
 
 /// Register your application's routes here.
 public func routes(_ router: Router) throws {
+    
+    let benefitsController = BenefitsController()
+    try router.register(collection: benefitsController)
 
     let usersController = UsersController()
     try router.register(collection: usersController)
+    
+    let companiesController = CompaniesController()
+    try router.register(collection: companiesController)
 
 }
