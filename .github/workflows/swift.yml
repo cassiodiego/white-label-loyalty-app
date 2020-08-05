@@ -1,8 +1,13 @@
-name: white-label-loyalty-app
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+name: white-label-loyalty-ios
+on:
+    push:
+        branches:
+            - master
+            - develop
+    pull_request:
+        branches:
+            - master
+            - develop
 jobs:
   build:
     runs-on: macos-latest
