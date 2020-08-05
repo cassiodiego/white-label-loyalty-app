@@ -1,4 +1,4 @@
-name: white-label-loyalty-ios
+name: white-label-loyalty-app
 on:
     push:
         branches:
