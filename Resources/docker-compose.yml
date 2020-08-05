@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+    container_name: white-label-loyalty-app
+    ports:
+    - 8080:8080
+    depends_on:
+    - db
+#    environment:
+#      ENV: dev
+#      DATABASE_URL:
+#      DATABASE_USER: white-label-loyalty-db
+#      DATABASE_PASSWORD: white-label-loyalty-db
+
+  db:
+    image: mysql:latest
+    container_name: white-label-loyalty-db
+    ports:
+    - 3306:3306
+    environment:
+    - MYSQL_DATABASE=white-label-loyalty-db
+    - MYSQL_ROOT_PASSWORD=white-label-loyalty-db
+    - MYSQL_PASSWORD=white-label-loyalty-db
