@@ -10,7 +10,7 @@ import Vapor
 
 struct CompaniesController: RouteCollection {
   func boot(router: Router) throws {
-    let companiesRoute = router.grouped("v1", "api", "companies")
+    let companiesRoute = router.grouped("v1", "companies")
     companiesRoute.post(use: createHandler)
     companiesRoute.get(use: getAllHandler)
     companiesRoute.get(Company.parameter, use: getHandler)

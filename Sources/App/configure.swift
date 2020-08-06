@@ -40,13 +40,14 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     Company.defaultDatabase = .mysql
     Benefit.defaultDatabase = .mysql
     BenefitCompanyPivot.defaultDatabase = .mysql
+    UsersBanefitsPivot.defaultDatabase = .mysql
     
     /// Configure migrations
     var migrations = MigrationConfig()
     migrations.add(model: Benefit.self, database: .mysql)
     migrations.add(model: User.self, database: .mysql)
     migrations.add(model: Company.self, database: .mysql)
-    migrations.add(model: BenefitCompanyPivot.self, database: .mysql)
+    migrations.add(model: UsersBanefitsPivot.self, database: .mysql)
     migrations.add(model: Token.self, database: .mysql)
     
     services.register(migrations)
