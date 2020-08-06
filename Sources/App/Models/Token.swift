@@ -14,6 +14,8 @@ import Authentication
 
 final class Token: Codable {
     
+  static let entity = "tokens"
+
   var id: UUID?
   var token: String
   var userID: User.ID
