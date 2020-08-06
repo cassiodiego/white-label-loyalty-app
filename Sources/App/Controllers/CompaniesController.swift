@@ -15,7 +15,6 @@ struct CompaniesController: RouteCollection {
     companiesRoute.get(use: getAllHandler)
     companiesRoute.get(Company.parameter, use: getHandler)
     companiesRoute.get(Company.parameter, "benefits", use: getBenefitsHandler)
-
   }
   
   func createHandler(_ req: Request) throws -> Future<Company> {
