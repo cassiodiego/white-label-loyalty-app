@@ -17,14 +17,6 @@ struct BenefitsController: RouteCollection {
     benefitsRoute.get(Benefit.parameter, use: getHandler)
     benefitsRoute.get(Benefit.parameter, "companies", use: getCompaniesHandler)
     benefitsRoute.get("search", use: searchHandler)
-    
-    let tokenAuthMiddleware = User.tokenAuthMiddleware()
-    let guardMiddleware = User.guardAuthMiddleware()
-    let tokenAuthGroup = benefitsRoute.grouped(tokenAuthMiddleware, guardMiddleware)
-    tokenAuthGroup.post(BenefitCreateData.self, use: createHandler)
-    tokenAuthGroup.delete(Benefit.parameter, use: deleteHandler)
-    tokenAuthGroup.put(Benefit.parameter, use: updateHandler)
-    tokenAuthGroup.post(Benefit.parameter, "companies", Category.parameter, use: addCompaniesHandler)
   }
 
   func createHandler(_ req: Request) throws -> Future<Benefit> {
