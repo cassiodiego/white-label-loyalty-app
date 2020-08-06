@@ -11,7 +11,7 @@ import Crypto
 
 struct UsersController: RouteCollection {
   func boot(router: Router) throws {
-    let usersRoute = router.grouped("v1", "api", "users")
+    let usersRoute = router.grouped("v1", "users")
     usersRoute.post(use: createHandler)
     usersRoute.get(use: getAllHandler)
     usersRoute.get(User.parameter, use: getHandler)

@@ -11,12 +11,12 @@ import Fluent
 
 struct BenefitsController: RouteCollection {
   func boot(router: Router) throws {
-    let benefitsRoute = router.grouped("v1", "api", "benefits")
+    let benefitsRoute = router.grouped("v1", "benefits")
     benefitsRoute.post(use: createHandler)
     benefitsRoute.get(use: getAllHandler)
     benefitsRoute.get(Benefit.parameter, use: getHandler)
     benefitsRoute.get(Benefit.parameter, "companies", use: getCompaniesHandler)
-    benefitsRoute.get("search", use: searchHandler)  
+    benefitsRoute.get("search", use: searchHandler)
   }
   
   func createHandler(_ req: Request) throws -> Future<Benefit> {
