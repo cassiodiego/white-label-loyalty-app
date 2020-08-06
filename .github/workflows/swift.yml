@@ -1,9 +1,5 @@
-name: white-label-loyalty-app
+name: Swift
 on:
-    push:
-        branches:
-            - master
-            - develop
     pull_request:
         branches:
             - master
