@@ -9,11 +9,6 @@ services:
     - 8080:8080
     depends_on:
     - db
-#    environment:
-#      ENV: dev
-#      DATABASE_URL:
-#      DATABASE_USER: white-label-loyalty-db
-#      DATABASE_PASSWORD: white-label-loyalty-db
 
   db:
     image: mysql:latest
