@@ -18,11 +18,11 @@ final class Token: Codable {
 
   var id: UUID?
   var token: String
-  var userID: User.ID
+  var users_id: User.ID
   
-  init(token: String, userID: User.ID) {
+  init(token: String, users_id: User.ID) {
     self.token = token
-    self.userID = userID
+    self.users_id = users_id
   }
 }
 
@@ -32,19 +32,19 @@ extension Token: Migration {}
 
 extension Token {
   var user: Parent<Token, User> {
-    return parent(\.userID)
+    return parent(\.users_id)
   }
 }
 
 extension Token {
   static func generate(for user: User) throws -> Token {
     let random = try CryptoRandom().generateData(count: 16)
-    return try Token(token: random.base64EncodedString(), userID: user.requireID())
+    return try Token(token: random.base64EncodedString(), users_id: user.requireID())
   }
 }
 
 extension Token: Authentication.Token {
-  static let userIDKey: UserIDKey = \Token.userID
+  static let userIDKey: UserIDKey = \Token.users_id
   typealias UserType = User
 }
 
