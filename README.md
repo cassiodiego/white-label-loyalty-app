@@ -4,10 +4,10 @@
 Unlabeled loyalty app
 
 ## Architecture
-![Architecture](Resources/Docs/white-label-loyalty-app.png)
+![Architecture](Documentation/Images/white-label-loyalty-app.png)
 
 ## Database
-![MER](Resources/Docs/white-label-loyalty-db.png)
+![MER](Documentation/Images/white-label-loyalty-db.png)
 
 ## Running Database on Docker
 ```
