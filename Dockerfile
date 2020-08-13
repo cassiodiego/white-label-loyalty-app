@@ -29,8 +29,6 @@ RUN \
 WORKDIR /app/
 COPY --from=builder /build/bin .
 COPY --from=builder /build/lib/* /usr/lib/
-COPY --from=builder /app/Resources ./Resources
-COPY --from=builder /app/Public ./Public
 EXPOSE 8080
 
 CMD ["./Run","--env=production","--port=8080","--hostname=0.0.0.0"]
