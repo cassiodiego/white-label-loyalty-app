@@ -21,7 +21,6 @@ RUN \
   apt-get -q update && apt-get -q -y install \
   libatomic1 \
   libbsd0 \
-  libcurl4 \
   libicu55 \
   libmysqlclient20 \
   libxml2 \
