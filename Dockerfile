@@ -1,5 +1,5 @@
 # Build image
-FROM vapor/swift:5.2 as build
+FROM vapor/swift:4.2 as build
 WORKDIR /build
 COPY ./Package.* ./
 RUN swift package resolve
