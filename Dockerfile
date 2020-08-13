@@ -1,4 +1,3 @@
-# Remember to pick the correct Swift version
 FROM swift:4.2 as builder
 WORKDIR /app/
 COPY . .
