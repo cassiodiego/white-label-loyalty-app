@@ -1,37 +1,16 @@
-# Remember to pick the correct Swift version
-FROM swift:4.2.2 as builder
-WORKDIR /app/
+# Build image
+FROM vapor/swift:5.2 as build
+WORKDIR /build
+COPY ./Package.* ./
+RUN swift package resolve
 COPY . .
+RUN swift build --enable-test-discovery -c release -Xswiftc -g
 
-# Install any dependencies there might be
-RUN \
-  apt-get -q update && apt-get -q -y install \
-  libmysqlclient-dev \
-  && rm -r /var/lib/apt/lists/*
-
-# Build the artifacts
-RUN mkdir -p /build/lib && cp -R /usr/lib/swift/linux/*.so /build/lib
-RUN bash -c "swift build -c release && mv `swift build -c release --show-bin-path` /build/bin"
-
-# Setup new machine to run the artifacts
-FROM ubuntu:16.04
-
-# Install any dependencies there might be
-RUN \
-  apt-get -q update && apt-get -q -y install \
-  libatomic1 \
-  libbsd0 \
-  libcurl4 \
-  libicu55 \
-  libmysqlclient20 \
-  libxml2 \
-  libcurl4-openssl-dev \
-  && rm -r /var/lib/apt/lists/*
-WORKDIR /app/
-COPY --from=builder /build/bin .
-COPY --from=builder /build/lib/* /usr/lib/
-COPY --from=builder /app/Resources ./Resources
-COPY --from=builder /app/Public ./Public
-EXPOSE 8080
-
-CMD ["./Run","--env=production","--port=8080","--hostname=0.0.0.0"]
+# Run image
+FROM vapor/ubuntu:18.04
+WORKDIR /run
+COPY --from=build /build/.build/release /run
+COPY --from=build /usr/lib/swift/ /usr/lib/swift/
+COPY --from=build /build/Public /run/Public
+ENTRYPOINT ["./Run"]
+CMD ["serve", "--env", "production", "--hostname", "0.0.0.0"]
