@@ -14,7 +14,7 @@ RUN mkdir -p /build/lib && cp -R /usr/lib/swift/linux/*.so /build/lib
 RUN bash -c "swift build -c release && mv `swift build -c release --show-bin-path` /build/bin"
 
 # Setup new machine to run the artifacts
-FROM ubuntu:latest
+FROM ubuntu:16.04
 
 # Install any dependencies there might be
 RUN \
