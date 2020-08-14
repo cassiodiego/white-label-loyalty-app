@@ -39,7 +39,7 @@ extension Benefit: MySQLModel {}
 extension Benefit: Migration {
     static func prepare(on connection: MySQLConnection) -> Future<Void> {
       return Database.create(self, on: connection) { builder in
-        builder.field(for: \.id, isOptional: false, isIdentifier: true)
+        builder.field(for: \.id, isIdentifier: true)
       }
     }
 }
