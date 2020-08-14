@@ -35,8 +35,17 @@ final class Benefit: Codable {
 }
 
 extension Benefit: MySQLModel {}
-extension Benefit: Migration {}
+
+extension Benefit: Migration {
+    static func prepare(on connection: MySQLConnection) -> Future<Void> {
+      return Database.create(self, on: connection) { builder in
+        builder.field(for: \.id, isIdentifier: true)
+      }
+    }
+}
+
 extension Benefit: Content {}
+
 extension Benefit: Parameter {}
 
 extension Benefit {

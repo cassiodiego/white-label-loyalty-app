@@ -25,8 +25,17 @@ final class Company: Codable {
 }
   
 extension Company: MySQLModel {}
-extension Company: Migration {}
+
+extension Company: Migration {
+    static func prepare(on connection: MySQLConnection) -> Future<Void> {
+      return Database.create(self, on: connection) { builder in
+        builder.field(for: \.id, isIdentifier: true)
+      }
+    }
+}
+
 extension Company: Content {}
+
 extension Company: Parameter {}
 
 extension Company {
