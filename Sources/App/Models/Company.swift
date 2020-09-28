@@ -34,8 +34,7 @@ extension Company: MySQLModel { }
 extension Company: Migration {
     static func prepare(on connection: MySQLConnection) -> Future<Void> {
         return Database.create(self, on: connection) { builder in
-            try addProperties(to: builder)
-            builder.unique(on: \.cnpj)
+            builder.field(for: \.id, isIdentifier: true)
         }
     }
 }
