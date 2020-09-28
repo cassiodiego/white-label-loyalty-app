@@ -30,7 +30,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     services.register(middlewares)
     
     /// Database  configurations
-    let databaseConfig = MySQLDatabaseConfig(hostname: "127.0.0.1",
+    let databaseConfig = MySQLDatabaseConfig(hostname: "localhost",
                                              port: 3306,
                                              username: "white-label-loyalty-db",
                                              password: "white-label-loyalty-db",
