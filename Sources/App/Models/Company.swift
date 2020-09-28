@@ -19,9 +19,7 @@ final class Company: Codable {
     var cnpj: String
     var description: String
     
-    init(name: String,
-         cnpj: String,
-         description: String {
+    init(name: String, cnpj: String, description: String) {
         self.name = name
         self.cnpj = cnpj
         self.description = description
