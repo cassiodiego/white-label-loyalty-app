@@ -23,7 +23,13 @@ final class Benefit: Codable {
     var expiration: String
     var companies_id: Int
     
-    init(title: String, description: String, points: Float, status: Int, amount: Int, expiration: String, companies_id: Int) {
+    init(title: String,
+         description: String,
+         points: Float,
+         status: Int,
+         amount: Int,
+         expiration: String,
+         companies_id: Int) {
         self.title = title
         self.description = description
         self.points = points
@@ -39,7 +45,8 @@ extension Benefit: MySQLModel { }
 extension Benefit: Migration {
     static func prepare(on connection: MySQLConnection) -> Future<Void> {
         return Database.create(self, on: connection) { builder in
-            builder.field(for: \.id, isIdentifier: true)
+            try addProperties(to: builder)
+            builder.unique(on: \.id)
         }
     }
 }

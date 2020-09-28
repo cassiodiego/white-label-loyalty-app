@@ -6,6 +6,7 @@
 //  Copyright (c) 2020 Cassio Diego Tavares Campos. All rights reserved.
 //
 
+import Foundation
 import Vapor
 import FluentMySQL
 
@@ -15,14 +16,15 @@ final class Company: Codable {
     
     var id: Int?
     var name: String
+    var cnpj: String
     var description: String
-    var register: String
     
-    init(name: String, description: String, register: String) {
+    init(name: String, cnpj: String, description: String) {
         self.name = name
+        self.cnpj = cnpj
         self.description = description
-        self.register = register
     }
+    
 }
 
 extension Company: MySQLModel { }
